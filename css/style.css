@@ -113,7 +113,7 @@ body {
   position: absolute;
   content: '';
   width: 0%;
-  height: 2px;
+  height: 1px;
   left: 0;
   bottom: -4px;
   transition: all .3s ease;
@@ -133,10 +133,22 @@ body {
 .basket {
   position: relative;
   justify-self: flex-end;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .3s ease;
 }
 
 .basket span {
   display: none;
+}
+
+.basket:hover {
+  border-radius: 100%;
+  background-color: #f6f4f5;
+  transition: all .3s ease;
 }
 
 .basket--on span {
@@ -249,6 +261,8 @@ body {
 .buy-btn__text:hover {
   background: rgba(232, 230, 231, 0.05);
   border: none;
+  color: #BC10D8;
+  font-weight: 700;
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
 }
@@ -505,6 +519,10 @@ body {
   transition: all 0.4s ease;
   display: block;
   outline: none;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  border-image: linear-gradient(rgb(188, 16, 216) 0%, rgba(80, 0, 250, 0.93) 100%) 1 / 1 / 0 stretch;
 }
 
 .game__item:before,
@@ -527,11 +545,12 @@ body {
 .game__item:hover:after,
 .game__link:hover::after {
   width: 100%;
+  
 }
 
 .game__item:hover,
 .game__link:hover {
-  border: none;
+  border: 1px solid transparent;
 }
 
 .game__item:before,
@@ -540,10 +559,10 @@ body {
 .game__link::after {
   position: absolute;
   content: "";
-  right: 0;
-  bottom: 0;
-  background: #BC10D8;
-  transition: all 0.4s ease;
+  right: 0px;
+  bottom: 0px;
+  background: rgb(188, 16, 216);
+  transition: all 0.4s ease 0s;
 }
 
 .game__item-wrapper,
@@ -553,10 +572,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  align-items: center;
+  justify-content: center;
   padding: 10px 20px 18px;
-  border: 1px solid #BC10D8;
   display: flex;
   flex-direction: column;
+  border: none;
 }
 
 .game__item-wrapper:before,
@@ -592,6 +613,7 @@ body {
 .game__link span:hover::after {
   width: 100%;
 }
+
 
 .buy {
   margin-bottom: 110px;
@@ -857,6 +879,35 @@ body {
   gap: 20px;
 }
 
+.footer__social-item:nth-child(1) a {
+  -webkit-mask-image: url(../images/youtube.svg);
+  mask-image: url(../images/youtube.svg);
+}
+
+.footer__social-item:nth-child(2) a {
+  -webkit-mask-image: url(../images/fb.svg);
+  mask-image: url(../images/fb.svg);
+}
+
+.footer__social-item:nth-child(3) a {
+  -webkit-mask-image: url(../images/inst.svg);
+  mask-image: url(../images/inst.svg);
+}
+
+.footer__social-item a {
+  display: block;
+  width: 30px;
+  height: 30px;
+  transition: all 0.3s ease;
+  background-color: #797777;
+  -webkit-mask-size: 100%;
+}
+
+.footer__social-item a:hover {
+  background-image: linear-gradient(180deg, #bc10d8 0%, rgba(80, 0, 250, 0.93) 100%);
+  transition: all .3s ease;
+}
+
 @media (max-width:1140px) {
   .footer .menu {
     display: none;
@@ -920,6 +971,7 @@ body {
     padding: 10px 0px;
     position: relative;
   }
+
   .menu--active {
     transform: translateX(-3%);
     transition: transform .5s;
@@ -962,9 +1014,14 @@ body {
   }
 
   .equipment__box {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1;
+    gap: 20px 30px;
+    align-items: end;
+    justify-items: end;
   }
+
 
   .equipment__box-item:nth-child(1) {
     order: 1;
@@ -972,11 +1029,6 @@ body {
 
   .equipment__box-item:nth-child(2) {
     order: 1;
-  }
-
-  .equipment__box-img {
-    width: 100%;
-    margin-bottom: 10px;
   }
 
   .accessories__item {
@@ -1093,6 +1145,20 @@ body {
     gap: 25px;
   }
 
+  .equipment__box-item:nth-child(3) {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .equipment__box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1;
+    gap: 20px 30px;
+    align-items: end;
+    justify-items: end;
+  }
+
 }
 
 @media (max-width:420px) {
@@ -1122,7 +1188,24 @@ body {
   .menu {
     width: 110%;
   }
+
   .game__link {
+    width: 100%;
+  }
+
+  .equipment__box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .equipment__box-img {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .equipment__box-item {
     width: 100%;
   }
 }
